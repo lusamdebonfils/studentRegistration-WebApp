@@ -1,4 +1,4 @@
-package edu.mum.cs425.lab8.eregisterapplication.bean;
+package edu.mum.cs425.lab8.eregisterapplication.model;
 
 
 import javax.persistence.*;
