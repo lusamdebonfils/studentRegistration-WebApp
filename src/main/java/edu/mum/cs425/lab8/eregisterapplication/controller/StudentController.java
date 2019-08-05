@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -41,7 +38,7 @@ public class StudentController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "student/add";
         }
-        student = studentService.saveBook(student);
+        student = studentService.saveStudent(student);
         return "redirect:/eregister/students";
     }
 
@@ -51,8 +48,40 @@ public class StudentController {
         return "redirect:/eregister/students";
     }
 
+    @GetMapping(value = {"/eregister/student/edit/{studentId}"})
+    public String editStudent(@PathVariable Long studentId, Model model) {
+        Student student = studentService.getStudentById(studentId);
+        if (student != null) {
+            model.addAttribute("student", student);
+            return "student/edit";
+        }
+        return "redirect:/eregister/students";
+    }
 
+    @PostMapping(value = {"/eregister/student/edit"})
+    public String updateStudent(@Valid @ModelAttribute("student") Student student,
+                             BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "student/edit";
+        }
+        student = studentService.saveStudent(student);
+        return "redirect:/eregister/students";
+    }
 
+    @GetMapping(value = "/eregister/student/search")
+    public ModelAndView searchResults(@RequestParam("searchCriteria") String searchCriteria){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("students",studentService.searchStudents(searchCriteria));
+        modelAndView.setViewName("student/list");
+        return modelAndView;
+    }
+//    public ModelAndView listStudents(){
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.addObject("students",studentService.getAllStudents());
+//        modelAndView.setViewName("student/list");
+//        return modelAndView;
+//    }
 
 
 }

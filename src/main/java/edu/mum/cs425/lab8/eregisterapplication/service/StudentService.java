@@ -9,7 +9,9 @@ import java.util.Optional;
 
 public interface StudentService {
     public List<Student> getAllStudents();
-    public Student saveBook(Student student);
+    public Student saveStudent(Student student);
     public Student getStudentById(Long studentID);
     public void deleteStudentById(Long studentID);
+    public Student upDateStudent(Student student);
+    public List<Student> searchStudents(String str);
 }

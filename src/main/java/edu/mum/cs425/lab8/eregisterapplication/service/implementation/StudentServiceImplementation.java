@@ -4,12 +4,9 @@ import edu.mum.cs425.lab8.eregisterapplication.model.Student;
 import edu.mum.cs425.lab8.eregisterapplication.repository.StudentRepository;
 import edu.mum.cs425.lab8.eregisterapplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentServiceImplementation implements StudentService {
@@ -23,7 +20,7 @@ public class StudentServiceImplementation implements StudentService {
     }
 
     @Override
-    public Student saveBook(Student student) {
+    public Student saveStudent(Student student) {
         return studentRepo.save(student);
     }
 
@@ -35,5 +32,15 @@ public class StudentServiceImplementation implements StudentService {
     @Override
     public void deleteStudentById(Long studentID) {
         studentRepo.deleteById(studentID);
+    }
+
+    @Override
+    public Student upDateStudent(Student student) {
+        return studentRepo.saveAndFlush(student);
+    }
+
+    @Override
+    public List<Student> searchStudents(String str) {
+        return studentRepo.findStudentByFirstNameContainsOrLastNameContainsOrMiddleNameContains(str,str,str);
     }
 }

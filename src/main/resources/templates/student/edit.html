@@ -39,7 +39,7 @@
         <span style="font-size: 2em; color: #32a5e7;">New Student Form</span>
     </div>
 
-    <form id="newStudentForm" method="post" action="/eregister/student/new" th:object="${student}">
+    <form id="editStudentForm" method="post" action="/eregister/student/edit" th:object="${student}">
         <fieldset>
             <input type="hidden" name="studentId" th:value="${student.studentId}"/>
             <div class="row">
@@ -113,13 +113,12 @@
                               class="alert alert-danger"></span>
                         <input id="enrollmentDate" name="enrollmentDate" type="date" class="form-control"
                                th:field="*{{enrollmentDate}}" required/>
-
                     </div>
                 </div>
             </div>
             <div style="float:right;">
                 <a href="/eregister/students" class="btn btn-outline-warning btn-small">Cancel</a>&nbsp;&nbsp;&nbsp;
-                <button id="btnSubmit" type="submit" class="btn btn-outline-success btn-small">Save Student</button>
+                <button id="btnSubmit" type="submit" class="btn btn-outline-success btn-small">update Student</button>
             </div>
         </fieldset>
     </form>

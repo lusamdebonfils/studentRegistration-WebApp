@@ -12,7 +12,7 @@ public class Student {
     @Id
     @GeneratedValue
     private Long studentId;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Long studentNumber;
     @Column(nullable = false)
     private String firstName;
