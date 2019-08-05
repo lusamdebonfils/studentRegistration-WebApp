@@ -49,7 +49,7 @@
                         <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
                               class="alert alert-danger"></span>
                         <input id="firstName" name="firstName" type="text" class="form-control"
-                               th:value="${student.firstName}">
+                               th:value="${student.firstName}" required/>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -67,7 +67,7 @@
                         <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                               class="alert alert-danger"></span>
                         <input id="lastName" name="lastName" type="text" class="form-control"
-                               th:value="${student.lastName}">
+                               th:value="${student.lastName}" required/>
                     </div>
                 </div>
 
@@ -79,7 +79,7 @@
                         <label for="studentNumber">Student Number</label>
                         <span th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
                               class="alert alert-danger"></span>
-                        <input id="studentNumber" name="studentNumber" type="text" class="form-control" th:value="${student.studentNumber}">
+                        <input id="studentNumber" name="studentNumber" type="text" class="form-control" th:value="${student.studentNumber}" required>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -100,19 +100,11 @@
                     <div class="form-group">
                         <label for="isInternational">International Status</label>
                         <select class="custom-select" th:field="*{isInternational}">
-<!--                            <option selected="">Choose status</option>-->
+                            <!--   <option selected="">Choose status</option>-->
                             <option th:value=true>International</option>
                             <option th:value=false>Local</option>
                         </select>
                     </div>
-
-<!--                    <div class="form-group">-->
-<!--                        <label for="isInternational">International</label>-->
-<!--                        <span th:if="${#fields.hasErrors('isInternational')}" th:errors="*{isInternational}"-->
-<!--                              class="alert alert-danger"></span>-->
-<!--                        <input id="isInternational" name="isInternational" type="text" class="form-control"-->
-<!--                               th:value="${student.isInternational}">-->
-<!--                    </div>-->
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
@@ -120,7 +112,7 @@
                         <span th:if="${#fields.hasErrors('enrollmentDate')}" th:errors="*{enrollmentDate}"
                               class="alert alert-danger"></span>
                         <input id="enrollmentDate" name="enrollmentDate" type="date" class="form-control"
-                               th:field="*{{enrollmentDate}}" />
+                               th:field="*{{enrollmentDate}}" required/>
 
                     </div>
                 </div>
