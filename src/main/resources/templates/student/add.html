@@ -96,7 +96,15 @@
                 </div>
             </div>
             <div class="row">
-<!--                <div class="col-md-4">-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select class="custom-select">
+                            <option selected="">Choose status</option>
+                            <option value="1">International</option>
+                            <option value="2">Local</option>
+                        </select>
+                    </div>
+
 <!--                    <div class="form-group">-->
 <!--                        <label for="isInternational">International</label>-->
 <!--                        <span th:if="${#fields.hasErrors('isInternational')}" th:errors="*{isInternational}"-->
@@ -104,7 +112,7 @@
 <!--                        <input id="isInternational" name="isInternational" type="text" class="form-control"-->
 <!--                               th:value="${student.isInternational}">-->
 <!--                    </div>-->
-<!--                </div>-->
+                </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="enrollmentDate">Enrollment Date</label>
