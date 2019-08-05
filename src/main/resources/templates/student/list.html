@@ -51,8 +51,9 @@
             <th scope="col">First Name</th>
             <th scope="col">Middle Name</th>
             <th scope="col">Last Name</th>
+            <th scope="col">cgpa</th>
             <th scope="col">Date Registered</th>
-            <th scope="col">Status</th>
+            <th scope="col">International</th>
             <th scope="col">&nbsp;</th>
             <th scope="col">&nbsp;</th>
         </tr>
@@ -70,7 +71,7 @@
             <td th:text="${student.isInternational}"></td>
 
 
-            <td><a class="btn btn-outline-info btn-sm" th:href="@{'/eregister/student/edit/{studentId}'(studentId=${student.bookId})}">Edit</a></td>
+            <td><a class="btn btn-outline-info btn-sm" th:href="@{'/eregister/student/edit/{studentId}'(studentId=${student.studentId})}">Edit</a></td>
             <td>
                <a class="btn btn-outline-danger btn-sm" th:href="@{'/eregister/student/delete/' + ${student.studentId}}">Delete</a>
 

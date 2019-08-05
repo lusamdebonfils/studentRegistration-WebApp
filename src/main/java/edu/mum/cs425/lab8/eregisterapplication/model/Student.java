@@ -1,6 +1,8 @@
 package edu.mum.cs425.lab8.eregisterapplication.model;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -18,7 +20,7 @@ public class Student {
     @Column(nullable = false)
     private String lastName;
     private Double cgpa;
-    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate enrollmentDate;
     @Column(nullable = false)
     private Boolean isInternational;
@@ -99,11 +101,11 @@ public class Student {
         this.enrollmentDate = enrollmentDate;
     }
 
-    public Boolean getInternational() {
+    public Boolean getIsInternational() {
         return isInternational;
     }
 
-    public void setInternational(Boolean international) {
+    public void setIsInternational(Boolean international) {
         isInternational = international;
     }
 

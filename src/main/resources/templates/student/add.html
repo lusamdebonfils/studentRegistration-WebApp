@@ -98,10 +98,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <select class="custom-select">
-                            <option selected="">Choose status</option>
-                            <option value="1">International</option>
-                            <option value="2">Local</option>
+                        <label for="isInternational">International Status</label>
+                        <select class="custom-select" th:field="*{isInternational}">
+<!--                            <option selected="">Choose status</option>-->
+                            <option th:value=true>International</option>
+                            <option th:value=false>Local</option>
                         </select>
                     </div>
 
@@ -119,7 +120,8 @@
                         <span th:if="${#fields.hasErrors('enrollmentDate')}" th:errors="*{enrollmentDate}"
                               class="alert alert-danger"></span>
                         <input id="enrollmentDate" name="enrollmentDate" type="date" class="form-control"
-                               th:value="${student.enrollmentDate}">
+                               th:field="*{{enrollmentDate}}" />
+
                     </div>
                 </div>
             </div>
