@@ -5,8 +5,13 @@ import edu.mum.cs425.lab8.eregisterapplication.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 public class StudentController {
@@ -26,6 +31,17 @@ public class StudentController {
     public String displayNewBookForm(Model model) {
         model.addAttribute("student", new Student());
         return "student/add";
+    }
+
+    @PostMapping(value = {"/eregister/student/new"})
+    public String addNewStudent(@Valid @ModelAttribute("student") Student student,
+                                BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "student/add";
+        }
+        student = studentService.saveBook(student);
+        return "redirect:/eregister/students";
     }
 
 
