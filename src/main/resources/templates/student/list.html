@@ -32,8 +32,47 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
+
         </div>
     </nav>
+<!--    Table-->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student Number</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date Registered</th>
+            <th scope="col">Status</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student,iterStat : ${students}">
+            <!--th:onclick="@{document.location='/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}" -->
+            <th scope="row" th:text="${iterStat.count}"></th>
+            <td th:text="${student.studentNumber}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.middleName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.cgpa}"></td>
+            <td th:text="${student.enrollmentDate}"></td>
+            <td th:text="${student.isInternational}"></td>
+
+
+<!--            <td><a th:href="@{'/elibrary/student/edit/{studentId}'(studentId=${student.bookId})}">Edit</a></td>-->
+<!--            <td>-->
+<!--                <a data-toggle="modal" data-target="#confirmDeleteStudentModal" th:href="@{'/elibrary/student/delete/' + ${student.studentId}}">Delete</a>-->
+<!--                &lt;!&ndash;                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">&ndash;&gt;-->
+<!--                &lt;!&ndash;                            Launch demo modal&ndash;&gt;-->
+<!--                &lt;!&ndash;                        </button>&ndash;&gt;-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
 </div>
 </body>
