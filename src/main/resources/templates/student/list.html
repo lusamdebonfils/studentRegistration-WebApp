@@ -60,7 +60,6 @@
         </thead>
         <tbody>
         <tr th:each="student,iterStat : ${students}">
-            <!--th:onclick="@{document.location='/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}" -->
             <th scope="row" th:text="${iterStat.count}"></th>
             <td th:text="${student.studentNumber}"></td>
             <td th:text="${student.firstName}"></td>

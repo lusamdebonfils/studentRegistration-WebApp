@@ -12,6 +12,5 @@ public interface StudentService {
     public Student saveStudent(Student student);
     public Student getStudentById(Long studentID);
     public void deleteStudentById(Long studentID);
-    public Student upDateStudent(Student student);
     public List<Student> searchStudents(String str);
 }

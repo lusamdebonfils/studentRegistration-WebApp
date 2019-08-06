@@ -49,7 +49,7 @@ public class StudentController {
     }
 
     @GetMapping(value = {"/eregister/student/edit/{studentId}"})
-    public String editStudent(@PathVariable Long studentId, Model model) {
+    public String editStudent(@PathVariable("studentId") Long studentId, Model model) {
         Student student = studentService.getStudentById(studentId);
         if (student != null) {
             model.addAttribute("student", student);
@@ -76,12 +76,5 @@ public class StudentController {
         modelAndView.setViewName("student/list");
         return modelAndView;
     }
-//    public ModelAndView listStudents(){
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("students",studentService.getAllStudents());
-//        modelAndView.setViewName("student/list");
-//        return modelAndView;
-//    }
-
 
 }

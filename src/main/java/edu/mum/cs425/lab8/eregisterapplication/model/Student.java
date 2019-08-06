@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table(name="students")
 public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long studentId;
     @Column(nullable = false)
     private Long studentNumber;
@@ -51,6 +51,10 @@ public class Student {
 
     public Long getStudentId() {
         return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public Long getStudentNumber() {

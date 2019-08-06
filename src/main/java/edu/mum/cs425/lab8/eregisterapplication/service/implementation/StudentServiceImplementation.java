@@ -35,11 +35,6 @@ public class StudentServiceImplementation implements StudentService {
     }
 
     @Override
-    public Student upDateStudent(Student student) {
-        return studentRepo.saveAndFlush(student);
-    }
-
-    @Override
     public List<Student> searchStudents(String str) {
         return studentRepo.findStudentByFirstNameContainsOrLastNameContainsOrMiddleNameContains(str,str,str);
     }
