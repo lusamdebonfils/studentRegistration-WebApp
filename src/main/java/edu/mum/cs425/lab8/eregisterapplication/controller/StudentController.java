@@ -17,10 +17,27 @@ public class StudentController {
     private StudentService studentService;
 
 
+//    @GetMapping(value = {"eregister/students"})
+//    public ModelAndView listStudents(){
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.addObject("students",studentService.getAllStudents());
+//        modelAndView.setViewName("student/list");
+//        return modelAndView;
+//    }
+//
     @GetMapping(value = {"eregister/students"})
-    public ModelAndView listStudents(){
+    public ModelAndView listBooks(@RequestParam(defaultValue = "0") int pageno) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("students",studentService.getAllStudents());
+        modelAndView.addObject("students", studentService.getAllStudentsPaged(pageno));
+        modelAndView.addObject("currentPageNo", pageno);
+        modelAndView.setViewName("student/list");
+        return modelAndView;
+    }
+    @GetMapping(value = "/eregister/student/search")
+    public ModelAndView searchResults(@RequestParam("searchCriteria") String searchCriteria){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("students",studentService.searchStudents(searchCriteria));
+       // modelAndView.addObject("currentPageNo", pageno);
         modelAndView.setViewName("student/list");
         return modelAndView;
     }
@@ -69,12 +86,6 @@ public class StudentController {
         return "redirect:/eregister/students";
     }
 
-    @GetMapping(value = "/eregister/student/search")
-    public ModelAndView searchResults(@RequestParam("searchCriteria") String searchCriteria){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("students",studentService.searchStudents(searchCriteria));
-        modelAndView.setViewName("student/list");
-        return modelAndView;
-    }
+
 
 }
